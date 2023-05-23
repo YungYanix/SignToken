@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Страница регистрации</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="script.js"></script>
+  <meta charset="UTF-8">
+</head>
+<body>
+  <div class="container">
+    <img src="logo.png" alt="Логотип" class="logo">
+    <h1>Регистрация</h1>
+    <form id="registerForm" method="post">
+      <label for="username">Логин:</label>
+      <input type="text" id="username" name="username" required>
+
+      <label for="password">Пароль:</label>
+      <input type="password" id="password" name="password" required>
+      <label for="password">Кошелек:</label>
+      <input type="text" id="wallet" name="wallet" required>
+      <input type="submit" value="Зарегистрироваться">
+      <p class="login-link">Уже есть аккаунт? <a href="login.html">Вход</a></p>
+    </form>
+    <div id="message"></div>
+  </div>
+</body>
+</html>

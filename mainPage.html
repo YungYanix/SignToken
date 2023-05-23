@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Drawing App</title>
+  <link rel="stylesheet" href="mainPage.css">
+  <meta charset="UTF-8">
+  
+</head>
+<body>
+  <div class="topbar">
+    <div class="tabs">
+      <div class="tab">Создание</div>
+      <div class="tab">Личный кабинет</div>
+      <button id="exit" class="button">Выход</button>
+    </div>
+    <div class="logo"></div>
+  </div>
+
+  <div class="canvas-container">
+    <canvas id="myCanvas" width="398" height="300"></canvas>
+  </div>
+
+  <div class="controls">
+    <input type="color" id="color-picker" class="control-input">
+    <input type="number" min="1" max="10" step="1" value="1" id="thickness-input" class="control-input">
+    <button id="back-button" class="button">Назад</button>
+    <button id="clear-button" class="button">Очистить</button>
+    <button id="create-button" class="button">Создать</button>
+  </div>
+  <script src="mainPage.js"></script>
+</body>
+</html>
