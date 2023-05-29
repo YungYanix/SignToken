@@ -78,6 +78,39 @@ const logout = document.getElementById("exit");
 logout.addEventListener('click', (event) => {
   localStorage.removeItem('accessToken');
   window.location.replace("./login.html");
-updateDrawingSettings();
-
 });
+
+const createButton = document.getElementById("create-button");
+
+createButton.addEventListener('click', () => {
+  // Сохранение канвы в файл interim.png
+  saveCanvasToFile("interim.png");
+
+  // Переход на страницу metadata.html
+  window.location.href = "metadata.html";
+});
+
+function saveCanvasToFile(fileName) {
+  const canvasDataUrl = canvas.toDataURL();
+
+  fetch('/upload', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ canvasDataUrl, fileName }),
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data.message);
+    })
+    .catch(error => {
+      console.error('Произошла ошибка при отправке запроса на сервер', error);
+    });
+}
+
+
+
+
+
+

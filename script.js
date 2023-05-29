@@ -1,103 +1,50 @@
-// // document.addEventListener("DOMContentLoaded", function() {
-// //   var registerForm = document.getElementById("registerForm");
-// //   var passwordInput = document.getElementById("password");
+document.addEventListener("DOMContentLoaded", function() {
+  var registerForm = document.getElementById("registerForm");
+  var passwordInput = document.getElementById("password");
 
-// //   registerForm.addEventListener("submit", function(event) {
-// //     var username = document.getElementById("username").value;
-// //     var password = passwordInput.value;
+  registerForm.addEventListener("submit", function(event) {
+    var username = document.getElementById("username").value;
+    var password = passwordInput.value;
 
-// //     if (username.length <= 6) {
-// //       event.preventDefault();
-// //       displayMessage("Логин должен содержать более 6 символов");
-// //       return;
-// //     }
+    if (username.length <= 6) {
+      event.preventDefault();
+      displayMessage("Логин должен содержать более 6 символов");
+      return;
+    }
 
-// //     if (password.length <= 6) {
-// //       event.preventDefault();
-// //       displayMessage("Пароль должен содержать более 6 символов");
-// //       return;
-// //     }
+    if (password.length <= 6) {
+      event.preventDefault();
+      displayMessage("Пароль должен содержать более 6 символов");
+      return;
+    }
 
-// //     if (!/[A-Z]/.test(password) && !/[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?0-9]/.test(password)) {
-// //       event.preventDefault();
-// //       displayMessage("Пароль должен содержать заглавные буквы или специальные символы");
-// //       return;
-// //     }
+    if (!/[A-Z]/.test(password) && !/[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?0-9]/.test(password)) {
+      event.preventDefault();
+      displayMessage("Пароль должен содержать заглавные буквы или специальные символы");
+      return;
+    }
 
-// //     if (!/^[a-zA-Z0-9!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]+$/.test(password)) {
-// //       event.preventDefault();
-// //       displayMessage("Пароль должен состоять только из английских букв, цифр или специальных символов");
-// //       return;
-// //     }
+    if (!/^[a-zA-Z0-9!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]+$/.test(password)) {
+      event.preventDefault();
+      displayMessage("Пароль должен состоять только из английских букв, цифр или специальных символов");
+      return;
+    }
 
-// //     // Очистка недопустимых символов из пароля
-// //     var cleanedPassword = password.replace(/[^a-zA-Z0-9!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]+/g, '');
-// //     passwordInput.value = cleanedPassword;
-// //   });
+    // Очистка недопустимых символов из пароля
+    var cleanedPassword = password.replace(/[^a-zA-Z0-9!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]+/g, '');
+    passwordInput.value = cleanedPassword;
+  });
 
-// //   passwordInput.addEventListener("input", function() {
-// //     this.value = this.value.replace(/[^a-zA-Z0-9!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]+/g, '');
-// //   });
+  passwordInput.addEventListener("input", function() {
+    this.value = this.value.replace(/[^a-zA-Z0-9!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]+/g, '');
+  });
 
-// //   function displayMessage(message) {
-// //     var messageDiv = document.getElementById("message");
-// //     messageDiv.innerText = message;
-// //   }
-// // });
+  function displayMessage(message) {
+    var messageDiv = document.getElementById("message");
+    messageDiv.innerText = message;
+  }
+});
 
-// document.addEventListener('DOMContentLoaded', function() {
-//   checkAuthentication();
-// });
-
-// function checkAuthentication() {
-//   var accessToken = localStorage.getItem('accessToken');
-
-//   if (accessToken) {
-//     // Пользователь аутентифицирован
-//     console.log('Пользователь аутентифицирован');
-//     window.location.href = './mainPage.html'; // Перенаправляем на страницу mainPage.html
-//   } else {
-//     // Пользователь не аутентифицирован
-//     console.log('Пользователь не аутентифицирован');
-//   }
-// }
-
-// function registerUser(event) {
-//   event.preventDefault();
-
-//   var form = document.getElementById('registerForm');
-//   var username = form.elements.username.value;
-//   var password = form.elements.password.value;
-
-//   var data = {
-//     email: username,
-//     password: password
-//   };
-
-//   // Отправляем запрос на сервер
-//   fetch('http://localhost:4200/api/auth/register', {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json'
-//     },
-//     body: JSON.stringify(data)
-//   })
-//   .then(response => response.json())
-//   .then(data => {
-//     // Получаем ответ с accessToken
-//     var accessToken = data.accessToken;
-
-//     // Сохраняем accessToken в localStorage
-//     localStorage.setItem('accessToken', accessToken);
-
-//     // Перенаправляем на страницу mainPage.html
-//     window.location.href = './mainPage.html';
-//   })
-//   .catch(error => {
-//     console.log('Ошибка при регистрации:', error);
-//     document.getElementById('message').textContent = 'Ошибка при регистрации. Пожалуйста, попробуйте еще раз.';
-//   });
-// }
 
 // // Слушатель события submit для формы регистрации
 // var form = document.getElementById('registerForm');
@@ -123,7 +70,7 @@ form.addEventListener('submit', function(event) {
 
     function registerUser(email, password, wallet) {
       var xhr = new XMLHttpRequest();
-      var url = 'http://localhost:4200/api/auth/register'; // Замените на URL вашего PHP-скрипта регистрации
+      var url = 'http://localhost:4200/api/auth/register'; 
 
       xhr.open('POST', url, true);
       xhr.setRequestHeader('Content-Type', 'application/json');
